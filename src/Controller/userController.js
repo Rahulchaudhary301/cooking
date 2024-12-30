@@ -67,4 +67,31 @@ const UserLogin= async(req,res)=>{
 
 
 
-module.exports={UserLogin,userCrete}
+
+
+
+
+const getAllUser=async(req,res)=>{
+
+    try {
+        
+    
+         const data= await userModel.find()
+         res.status(201).send({ status: true, data: data })
+
+
+    }
+
+    catch (err) {
+
+        res.status(500).send({ status: false, msg: err.message })
+
+    }
+
+}
+
+
+
+
+
+module.exports={UserLogin,userCrete , getAllUser}

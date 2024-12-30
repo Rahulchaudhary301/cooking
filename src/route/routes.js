@@ -1,6 +1,7 @@
 const express= require("express")
 const UserController =require('../Controller/userController')
 const ItemController =require('../Controller/ItemController')
+const OrderController = require('../Controller/OrderController')
 const router= express.Router()
 
 //const middleware= require("../middleware/middleware")
@@ -22,7 +23,13 @@ router.post("/login",UserController.UserLogin)
 
 router.post("/rice",ItemController.RiceData)
 
+router.get("/getUser",UserController.getAllUser)
+router.get("/getOrder",OrderController.getAllOrder)
+
 router.get("/riceData",ItemController.AllRiceData)
+
+
+router.post("/order",OrderController.OrderData)
 
 //router.post("/books",middleware.authenticate,BooksController.createBooks)
 //router.get("/books",BooksController.getBooksData)
