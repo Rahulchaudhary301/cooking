@@ -2,6 +2,7 @@ const express= require("express")
 const UserController =require('../Controller/userController')
 const ItemController =require('../Controller/ItemController')
 const OrderController = require('../Controller/OrderController')
+const OrderItemListController = require('../Controller/OrederListItemController')
 const router= express.Router()
 
 //const middleware= require("../middleware/middleware")
@@ -26,10 +27,31 @@ router.post("/rice",ItemController.RiceData)
 router.get("/getUser",UserController.getAllUser)
 router.get("/getOrder",OrderController.getAllOrder)
 
+router.post("/updateRequest",OrderController.requestForUpdateByNumber)
+
+router.post("/PermissionRequest",OrderController.CheckPermission)
+
+router.post("/grantRequest",OrderController.permissionGrant)
+
+router.post("/getOrderByNumber",OrderController.getOrderByNumber)
+
+router.post("/OrderPrearedTrue",OrderController.requestForOderPreairedStatus)
+
+router.post("/OrderPrearedfalse",OrderController.requestForOderPreairedStatusFalse)
+
 router.get("/riceData",ItemController.AllRiceData)
 
 
 router.post("/order",OrderController.OrderData)
+
+
+router.post("/orderListItem",OrderItemListController.OrderListItem)
+
+router.post("/getOrderListItem",OrderItemListController.getOrderListFromOwner)
+
+
+
+
 
 //router.post("/books",middleware.authenticate,BooksController.createBooks)
 //router.get("/books",BooksController.getBooksData)

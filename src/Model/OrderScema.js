@@ -28,6 +28,10 @@ const OrderCategorySchema = new mongoose.Schema({
 const OrderSchema = new mongoose.Schema({
     name: { type: String, required: true },
     mobile: { type: String, required: true },
+    clientRequest: { type: Boolean, required: true },
+    requsetGrant: { type: Boolean, required: true },
+    orderPrepaired:{ type: Boolean, required: true },
+
     orderItem: { type: [OrderCategorySchema], required: true }, // List of categories and their items
 }, { timestamps: true });
 
