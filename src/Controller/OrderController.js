@@ -128,7 +128,7 @@ const permissionGrant = async (req, res) => {
             { new: true }                       // Return the updated document
         );
 
-        console.log("Permission granted");
+       // console.log("Permission granted");
 
         if (!updatedData) {
             return res.status(404).send({ status: false, msg: "Data not found for the given mobile number" });
@@ -165,7 +165,7 @@ const CheckPermission=async(req,res)=>{
         const { mobile } = req.body;
 
         // Find and update the document with the provided mobile number
-        const updatedData = await OrderModel.findOneAndUpdate({ mobile: mobile });
+        const updatedData = await OrderModel.find({ mobile: mobile });
 
          res.status(201).send({ status: true, data: updatedData })
     }
