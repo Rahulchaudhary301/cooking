@@ -199,7 +199,7 @@ const requestForOderPreairedStatus=async(req,res)=>{
 
         const { mobile } = req.body;
 
-        cosole.log('rahulllllllllllllllllll' , mobile)
+      //  console.log('rahulllllllllllllllllll' , mobile)
 
        const updatedData = await OrderModel.findOneAndUpdate(
         { mobile: mobile },              
