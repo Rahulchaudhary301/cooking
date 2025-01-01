@@ -201,7 +201,8 @@ const requestForOderPreairedStatus=async(req,res)=>{
 
        const updatedData = await OrderModel.findOneAndUpdate(
         { mobile: mobile },              // Filter by mobile number
-        { $set: { orderPrepaired: true } }, // Update the clientRequest key to true
+        { $set: { orderPrepaired: true , orderItemList: true}  }, // Update the clientRequest key to true
+       // { $set: { clientRequest: false, requsetGrant: true } }, // Update both fields
         { new: true }                    // Return the updated document
     );
 
