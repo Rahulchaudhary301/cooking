@@ -199,6 +199,8 @@ const requestForOderPreairedStatus=async(req,res)=>{
 
         const { mobile } = req.body;
 
+        cosole.log('rahulllllllllllllllllll' , mobile)
+
        const updatedData = await OrderModel.findOneAndUpdate(
         { mobile: mobile },              
         { $set: { orderPrepaired: true , orderItemList: true} }, 

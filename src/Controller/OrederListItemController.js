@@ -19,7 +19,7 @@ const OrderListItem = async (req, res) => {
     try {
         const order = req.body; 
 
-
+    //console.log('Rahuccccccccccccccc' , order)
        // Check if the mobile number exists in the request
        if (!order.mobile) {
         return res.status(400).send({ 
