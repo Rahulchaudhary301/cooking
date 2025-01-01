@@ -193,33 +193,31 @@ const CheckPermission=async(req,res)=>{
 
 
 
-const requestForOderPreairedStatus=async(req,res)=>{
-
+const requestForOrderPreparedStatus = async (req, res) => {
     try {
-
         const { mobile } = req.body;
 
-       const updatedData = await OrderModel.findOneAndUpdate(
-        { mobile: mobile },              // Filter by mobile number
-        { $set: { orderPrepaired: true , orderItemList: true}  }, // Update the clientRequest key to true
-       // { $set: { clientRequest: false, requsetGrant: true } }, // Update both fields
-        { new: true }                    // Return the updated document
-    );
+        if (!mobile) {
+            return res.status(400).send({ status: false, msg: "Mobile number is required" });
+        }
+
+        const updatedData = await OrderModel.findOneAndUpdate(
+            { mobile: mobile }, // Filter by mobile number
+            { $set: { orderPrepared: true, orderItemList: true } }, // Update fields
+            { new: true } // Return the updated document
+        );
 
         if (!updatedData) {
             return res.status(404).send({ status: false, msg: "Data not found for the given mobile number" });
         }
 
-         res.status(201).send({ status: true, data: updatedData })
+        res.status(200).send({ status: true, data: updatedData });
+    } catch (err) {
+        res.status(500).send({ status: false, msg: err.message });
     }
+};
 
-    catch (err) {
-
-        res.status(500).send({ status: false, msg: err.message })
-
-    }
-
-}
+module.exports = { requestForOrderPreparedStatus };
 
 
 
