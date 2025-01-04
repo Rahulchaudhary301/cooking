@@ -23,10 +23,7 @@ const DeleteAll = async (req, res) => {
       await DallModel.deleteMany({ mobile });
       await VegetableModel.deleteMany({ mobile });
 
-    // Save the new order
-    await OrderModel.create(order);
-
-        res.status(201).send({ status: true, message: "Data fetch successfully",});
+        res.status(201).send({ status: true, message: "Empty card Succeesfully",});
     } catch (err) {
         res.status(500).send({ status: false, message: err.message });
     }
