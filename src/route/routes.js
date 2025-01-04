@@ -3,6 +3,7 @@ const UserController =require('../Controller/userController')
 const ItemController =require('../Controller/ItemController')
 const OrderController = require('../Controller/OrderController')
 const OrderItemListController = require('../Controller/OrederListItemController')
+const AllModelController = require('../Controller/AllModelController')
 const router= express.Router()
 
 //const middleware= require("../middleware/middleware")
@@ -58,6 +59,9 @@ router.post("/order",OrderController.OrderData)
 router.post("/orderListItem",OrderItemListController.OrderListItem)
 
 router.post("/getOrderListItem",OrderItemListController.getOrderListFromOwner)
+
+
+router.post("/emptyCart",AllModelController.DeleteAll)
 
 
 
