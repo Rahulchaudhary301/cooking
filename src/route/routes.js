@@ -41,7 +41,7 @@ router.post("/OrderPrearedTrue",OrderController.requestForOderPreairedStatus)
 router.post("/OrderCancel",OrderController.CancelOrderSumited)
 
 
-
+router.post("/NotAcceptOrder",OrderController.NotAcceptOrderRequest)
 
 
 router.post("/OrderCancelPermmision",OrderController.PermissionForCancelOrber)

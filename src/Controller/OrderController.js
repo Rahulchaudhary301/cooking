@@ -306,6 +306,42 @@ const PermissionForCancelOrber =async(req,res)=>{
 
 
 
+const NotAcceptOrderRequest =async(req,res)=>{
+
+    try {
+
+        const { mobile } = req.body;
+
+       const updatedData = await OrderModel.findOneAndUpdate(
+
+        { mobile: mobile },              
+        { $set: { AcceptOrder: true } }, 
+       
+        { new: true }                   
+    );
+
+        if (!updatedData) {
+            return res.status(404).send({ status: false, msg: "Data not found for the given mobile number" });
+        }
+
+         res.status(201).send({ status: true, data: updatedData })
+    }
+
+    catch (err) {
+
+        res.status(500).send({ status: false, msg: err.message })
+
+    }
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -357,4 +393,4 @@ const requestForOderPreairedStatusFalse=async(req,res)=>{
 
 module.exports={OrderData , getAllOrder , getOrderByNumber , requestForUpdateByNumber , CheckPermission , 
 
-    permissionGrant , requestForOderPreairedStatus , requestForOderPreairedStatusFalse , CancelOrderSumited , PermissionForCancelOrber }
+    permissionGrant , requestForOderPreairedStatus , requestForOderPreairedStatusFalse , CancelOrderSumited , PermissionForCancelOrber , NotAcceptOrderRequest }
