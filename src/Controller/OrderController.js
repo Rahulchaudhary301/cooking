@@ -315,7 +315,7 @@ const NotAcceptOrderRequest =async(req,res)=>{
        const updatedData = await OrderModel.findOneAndUpdate(
 
         { mobile: mobile },              
-        { $set: { AcceptOrder: true } }, 
+        { $set: { AcceptOrder: true , requsetGrant: true} }, 
        
         { new: true }                   
     );
