@@ -376,6 +376,36 @@ const requestForOderPreairedStatusFalse=async(req,res)=>{
 
 
 
+const DeleteOrderWithMobileNumber=async(req,res)=>{
+
+    try {
+
+        const { mobile } = req.body; // Extract mobile number from the request body
+
+        if (!mobile) {
+            return res.status(400).send({ status: false, msg: "Mobile number is required" });
+        }
+
+        // Find and delete the user with the given mobile number
+        const deletedUser = await OrderModel.findOneAndDelete({ mobile });
+
+         res.status(201).send({ status: true,  msg: "User deleted successfully"})
+
+
+    }
+
+    catch (err) {
+
+        res.status(500).send({ status: false, msg: err.message })
+
+    }
+
+}
+
+
+
+
+
 
 
 
@@ -393,4 +423,4 @@ const requestForOderPreairedStatusFalse=async(req,res)=>{
 
 module.exports={OrderData , getAllOrder , getOrderByNumber , requestForUpdateByNumber , CheckPermission , 
 
-    permissionGrant , requestForOderPreairedStatus , requestForOderPreairedStatusFalse , CancelOrderSumited , PermissionForCancelOrber , NotAcceptOrderRequest }
+    permissionGrant , requestForOderPreairedStatus , requestForOderPreairedStatusFalse , CancelOrderSumited , PermissionForCancelOrber , NotAcceptOrderRequest , DeleteOrderWithMobileNumber}

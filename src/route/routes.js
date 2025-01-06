@@ -45,6 +45,8 @@ router.post("/OrderCancel",OrderController.CancelOrderSumited)
 
 router.post("/NotAcceptOrder",OrderController.NotAcceptOrderRequest)
 
+router.post("/DeleteOrder",OrderController.DeleteOrderWithMobileNumber)
+
 
 router.post("/OrderCancelPermmision",OrderController.PermissionForCancelOrber)
 
