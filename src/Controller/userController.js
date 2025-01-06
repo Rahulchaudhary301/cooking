@@ -94,4 +94,43 @@ const getAllUser=async(req,res)=>{
 
 
 
-module.exports={UserLogin,userCrete , getAllUser}
+const DeleteUserWithMobileNumber=async(req,res)=>{
+
+    try {
+
+        const { mobile } = req.body; // Extract mobile number from the request body
+
+        if (!mobile) {
+            return res.status(400).send({ status: false, msg: "Mobile number is required" });
+        }
+
+        // Find and delete the user with the given mobile number
+        const deletedUser = await userModel.findOneAndDelete({ mobile });
+
+        if (!deletedUser) {
+            return res.status(404).send({ status: false, msg: "User not found" });
+        }
+
+         res.status(201).send({ status: true, data: data , msg: "User deleted successfully"})
+
+
+    }
+
+    catch (err) {
+
+        res.status(500).send({ status: false, msg: err.message })
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+module.exports={UserLogin,userCrete , getAllUser , DeleteUserWithMobileNumber}

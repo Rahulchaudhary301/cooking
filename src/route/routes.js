@@ -23,6 +23,8 @@ router.post("/register",UserController.userCrete)
 
 router.post("/login",UserController.UserLogin)
 
+router.post("/DeleteUser",UserController.DeleteUserWithMobileNumber)
+
 router.post("/rice",ItemController.RiceData)
 
 router.get("/getUser",UserController.getAllUser)
