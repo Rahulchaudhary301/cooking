@@ -107,11 +107,7 @@ const DeleteUserWithMobileNumber=async(req,res)=>{
         // Find and delete the user with the given mobile number
         const deletedUser = await userModel.findOneAndDelete({ mobile });
 
-        if (!deletedUser) {
-            return res.status(404).send({ status: false, msg: "User not found" });
-        }
-
-         res.status(201).send({ status: true, data: data , msg: "User deleted successfully"})
+         res.status(201).send({ status: true,  msg: "User deleted successfully"})
 
 
     }
