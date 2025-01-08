@@ -44,7 +44,7 @@ const getAllOrder=async(req,res)=>{
 
     try {
         
-         const data= await OrderModel.find()
+         const data= await OrderModel.find().sort({ createdAt: -1 });
          res.status(201).send({ status: true, data: data })
     }
 

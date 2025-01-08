@@ -71,24 +71,15 @@ const UserLogin= async(req,res)=>{
 
 
 
-const getAllUser=async(req,res)=>{
-
+const getAllUser = async (req, res) => {
     try {
-        
-    
-         const data= await userModel.find()
-         res.status(201).send({ status: true, data: data })
-
-
+        // Fetch all users sorted by creation time in descending order
+        const data = await userModel.find().sort({ createdAt: -1 }); // -1 for descending order
+        res.status(201).send({ status: true, data: data });
+    } catch (err) {
+        res.status(500).send({ status: false, msg: err.message });
     }
-
-    catch (err) {
-
-        res.status(500).send({ status: false, msg: err.message })
-
-    }
-
-}
+};
 
 
 
