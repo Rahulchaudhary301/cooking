@@ -35,6 +35,8 @@ const OrderSchema = new mongoose.Schema({
     orderSumbit:{ type: Boolean, required: true },
     CancelOrderPermision:{ type: Boolean, required: true },
     AcceptOrder:{ type: Boolean, required: true },
+    workFinished:{ type: Boolean, required: true },
+    isDeleted:{ type: Boolean, required: true },
 
     orderItem: { type: [OrderCategorySchema], required: true }, // List of categories and their items
 }, { timestamps: true });
