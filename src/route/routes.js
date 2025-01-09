@@ -54,6 +54,8 @@ router.post("/OrderCancelPermmision",OrderController.PermissionForCancelOrber)
 
 router.post("/OrderPrearedfalse",OrderController.requestForOderPreairedStatusFalse)
 
+router.post("/permissionForNewOrder",OrderController.PermissionNewOrder)
+
 router.get("/riceData",ItemController.AllRiceData)
 
 
